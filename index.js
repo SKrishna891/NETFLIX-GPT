@@ -1,14 +1,9 @@
+// src/index.js
 import React from "react";
 import ReactDOM from "react-dom/client";
+import App from "./App";  // Import your main App component
 import "./index.css";
 
-const App = () => {
-  return (
-    <div className="text-3xl font-bold text-red-600 underline ">
-      Netflix Clone
-    </div>
-  );
-};
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
