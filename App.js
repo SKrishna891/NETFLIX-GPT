@@ -6,10 +6,10 @@ import appStore from "./src/utils/appStore";
 
 const App = () => {
   return (
-    <div className="text-3xl font-bold text-red-600 underline">
-     <Provider store={appStore}>
-      <Body />
-    </Provider> 
+    <div className="text-black bg-white p-4 no-underline">
+      <Provider store={appStore}>
+        <Body />
+      </Provider>
     </div>
   );
 };

@@ -6,16 +6,17 @@ import ValidateSigninData from "../utils/validate";
 import { createUserWithEmailAndPassword ,signInWithEmailAndPassword, updateProfile} from "firebase/auth";
 
 import {auth} from "../utils/firebase";
-import { useNavigate } from "react-router";
+
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { User_Avatar } from "../utils/constants";
 
 const Login = ()=>{
 
 const [SignInform, setSignInform] = useState(true);
 const[errmessage,seterrmessage] = useState();
 
-const navigate = useNavigate();
+
 
 const dispatch = useDispatch();
 
@@ -36,21 +37,30 @@ const password = useRef(null);
 
       if(message) return;
       if(!SignInform){
-        createUserWithEmailAndPassword(auth, email.current.value,password.current.value)
-        .then((userCredential) => {
-          // Signed up 
-          const user = userCredential.user;
-          updateProfile(user, {
-            displayName: name.current.value, photoURL: "https://avatars.githubusercontent.com/u/199135868?v=4"
-          }).then(() => {
-             const {uid,email,displayName,photoURL} = auth.currentUser;
-            dispatch(addUser({uid:uid,email:email,displayName:displayName,photoURL:photoURL}));
-            navigate("/browse");
-          }).catch((error) => {
-          
-          });
-        })
-        .catch((error) => {
+        createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+  .then(async (userCredential) => {
+    const user = userCredential.user;
+
+    try {
+      await updateProfile(user, {
+        displayName: name.current.value,
+        photoURL: User_Avatar,
+      });
+
+      // Ensure latest data is loaded
+      await auth.currentUser.reload();
+
+      const { uid, email, displayName, photoURL } = auth.currentUser;
+      dispatch(addUser({ uid, email, displayName, photoURL }));
+    } catch (error) {
+      seterrmessage(error.message);
+    }
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    seterrmessage(`${errorCode} - ${errorMessage}`);
+  }).catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
         seterrmessage(errorCode +"-" +errorMessage);
@@ -62,8 +72,7 @@ const password = useRef(null);
           .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
-            console.log(user);
-            navigate("/browse");
+            
           })
           .catch((error) => {
             const errorCode = error.code;
