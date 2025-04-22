@@ -9,3 +9,14 @@
       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYjE1MDVjN2UyOTkzYzE5YzdhZDY0ZDIyMzRkNTViMiIsIm5iZiI6MTc0NDgxMDEzMy45NCwic3ViIjoiNjdmZmIwOTU2MWIxYzRiYjMyOTlhYjI4Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.f1zXX8wdsumUyd4tdwyNtHz3CIpnddIqsfm5MiiEFw8'
     }
   };
+
+  export  const Image_Logo = "https://image.tmdb.org/t/p/w500";
+
+  export const Bg_Logo = "https://assets.nflxext.com/ffe/siteui/vlv3/fa4630b1-ca1e-4788-94a9-eccef9f7af86/web/US-en-20250407-TRIFECTA-perspective_e53d441f-ea54-4b60-a40e-dd76be0df041_large.jpg";
+
+  export  const Supported_Lang = 
+  [
+    {identifier : "en", name : "English"},
+    {identifier : "Telugu", name : "Telugu"},
+    {identifier : "Spanish", name : "Spanish"}
+  ]

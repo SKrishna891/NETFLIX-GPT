@@ -7,7 +7,6 @@ const MainComponent = ()=>{
 
     if(!movies) return;
     const maniMovie =   movies[0];
-    console.log(maniMovie);
 
     const {original_title,overview,id} = maniMovie;
     return(
