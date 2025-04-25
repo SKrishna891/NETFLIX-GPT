@@ -6,7 +6,7 @@
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYjE1MDVjN2UyOTkzYzE5YzdhZDY0ZDIyMzRkNTViMiIsIm5iZiI6MTc0NDgxMDEzMy45NCwic3ViIjoiNjdmZmIwOTU2MWIxYzRiYjMyOTlhYjI4Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.f1zXX8wdsumUyd4tdwyNtHz3CIpnddIqsfm5MiiEFw8'
+      Authorization: 'Bearer '+process.env.REACT_APP_TMDB_KEY,
     }
   };
 
@@ -19,4 +19,6 @@
     {identifier : "en", name : "English"},
     {identifier : "Telugu", name : "Telugu"},
     {identifier : "Spanish", name : "Spanish"}
-  ]
+  ];
+
+  export const OpenAI_KEY = process.env.REACT_APP_OpenAI_KEY;

@@ -12,6 +12,7 @@
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.4",
     "firebase": "^11.6.0",
+    "openai": "^4.95.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^9.2.0",
@@ -22,6 +23,8 @@
   },
   "devDependencies": {
     "@reduxjs/toolkit": "^2.6.1",
-    "parcel": "^2.14.4"
+    "buffer": "^6.0.3",
+    "parcel": "^2.14.4",
+    "process": "^0.11.10"
   }
 }
